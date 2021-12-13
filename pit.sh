@@ -234,7 +234,7 @@ sub_envs(){
     shopt -s extglob  # Enables matching words stackoverflow.com/questions/3574463/
     # Finds folders (hidden or not) which contain bin/activate
     local DEFENVS=$(ls -d $DEFAULT/*/bin/activate 2>/dev/null);
-    if [ $PWD != $DEFAULT ]; then
+    if [ "$PWD" != "$DEFAULT" ]; then
         local VENVS=$(ls -d */bin/activate 2>/dev/null);
     else
         local VENVS="";
@@ -330,7 +330,8 @@ END
 # Function for opening a desired project (cd into project and look for envs)
 sub_open(){
 local PYTHON_DB_OPEN=$(cat <<END
-if not '$1':
+ni = "$@"  # name_or_idx
+if not ni:
     print("ERROR: Subcommand 'open' requires one argument. Idx or name.")
     exit(1)
 
@@ -338,7 +339,7 @@ import json
 with open('$DB', 'r') as obj:
     db = json.load(obj)
 
-idx, name = (int('$1'), None) if '$1'.isdigit() else (None, '$1')
+idx, name = (int(ni), None) if ni.isdigit() else (None, ni)
 
 # Return path based on provided index
 if idx is not None:
@@ -362,19 +363,21 @@ else: # Return path based on provided name
     print(db[name]); exit(0)
 END
 )
+
     local OUT
     OUT=$($PYTHON -c "$PYTHON_DB_OPEN");
     local EC=$?
 
+
     if [ "$EC" = "0" ]; then
-        cd $OUT;
+        cd "$OUT";
         if [ "$FILEMANAGER" != "" ]; then
-            $FILEMANAGER $OUT;
+            $FILEMANAGER "$OUT";
         fi
         echo 'Project opened successfully.';
         sub_envs;
     else
-        echo $OUT;
+        echo "$OUT";
     fi
 }
 
@@ -446,7 +449,7 @@ case $SUBCOMMAND in
         ;;
     *)
         shift
-        sub_${SUBCOMMAND} $@
+        sub_${SUBCOMMAND} "$@"
         if [ $? = 127 ]; then
             echo "Error: '$SUBCOMMAND' is not a known subcommand." >&2
             echo "Run '$PROGNAME --help' for a list of known subcommands." >&2
