@@ -372,7 +372,7 @@ END
     if [ "$EC" = "0" ]; then
         cd "$OUT";
         if [ "$FILEMANAGER" != "" ]; then
-            $FILEMANAGER "$OUT";
+            $FILEMANAGER "$OUT" &
         fi
         echo 'Project opened successfully.';
         sub_envs;
