@@ -2,10 +2,10 @@
 
 # pit.sh (Project Index in Terminal)
 
-PIT is a small CRUD command line utility which provides developers with a
+PIT is a small CRUD command line utility that provides developers with a
 json database of projects they are currently working on and tools to use it.
 
-It's main features are:
+Its main features are:
 
 * quick overview and navigation between projects
 * simple management of virtual environments
@@ -27,7 +27,7 @@ No particular attention was paid to portability yet (i.e. do not try this on Win
 1. Do `source ~/.bash_aliases` and now the `pit` command should
 be available in your terminal
 
-(This script needs to be sourced, otherwise the activation of virualenv would not work.)
+(This script needs to be sourced, otherwise, the activation of virualenv would not work.)
 
 **All your files are safe**
 
@@ -65,20 +65,20 @@ and if you do not want to keep any data stored with pit per project, also remove
 `.pit` folder from each project.
 
 ## Note
-Yes, it is a horrendeous mix of python and bash, but I started it as a small
+Yes, it is a horrendous mix of python and bash, but I started it as a small
 bash script and then I expanded it using Python, because bash = pain.
-Though, some things like activating an environment for current terminal,
+Though, some things like activating an environment for the current terminal
 were much easier done from bash than from python. Also, I wanted this to be a
 single file.
 
 ## Future of the project
 My current self is in hope of extending the functionality and rewriting the whole
 project pure in Python. Maybe even in ncurses if I feel adventurous...
-So in case you would like to use such tool, star the repo or let me know.
-It helps with the motivation.
+So in case, you would like to use such a tool, please star the repo or let me know.
+It helps with motivation.
 
 I planned to extend the functionality to support per-project start and stop scripts,
-and per-project config, plus support for additional lists of resources, such as URLs etc.
+and per-project config, plus support for additional lists of resources, such as URLs, etc.
 But do not be fooled, the project might just get stalled, as I will be the only
 one in the world to use it. Who knows.
 
