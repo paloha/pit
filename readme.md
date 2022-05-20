@@ -1,3 +1,5 @@
+![alt text](https://repository-images.githubusercontent.com/431926729/f90934d5-9f08-441c-8018-ee86999ad8b9)
+
 # pit.sh (Project Index in Terminal)
 
 PIT is a small CRUD command line utility which provides developers with a
@@ -67,9 +69,17 @@ Yes, it is a horrendeous mix of python and bash, but I started it as a small
 bash script and then I expanded it using Python, because bash = pain.
 Though, some things like activating an environment for current terminal,
 were much easier done from bash than from python. Also, I wanted this to be a
-single file. My current self is in hope of rewriting and extending this project.
-So in case you would like to use such tool, star the repo or let me know. It
-helps with the motivation.
+single file.
+
+## Future of the project
+My current self is in hope of extending the functionality and rewriting the whole
+project pure in Python. So in case you would like to use such tool, star the
+repo or let me know. It helps with the motivation.  
+
+I planned to extend the functionality to support per-project start and stop scripts,
+and per-project config, plus support for additional lists of resources, such as URLs etc.
+But do not be fooled, the project might just be staled as I will be the only
+one in the world to use it. Probably. Who knows.
 
 ## License
 
