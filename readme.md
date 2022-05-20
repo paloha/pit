@@ -73,13 +73,14 @@ single file.
 
 ## Future of the project
 My current self is in hope of extending the functionality and rewriting the whole
-project pure in Python. So in case you would like to use such tool, star the
-repo or let me know. It helps with the motivation.  
+project pure in Python. Maybe even in ncurses if I feel adventurous...
+So in case you would like to use such tool, star the repo or let me know.
+It helps with the motivation.
 
 I planned to extend the functionality to support per-project start and stop scripts,
 and per-project config, plus support for additional lists of resources, such as URLs etc.
-But do not be fooled, the project might just be staled as I will be the only
-one in the world to use it. Probably. Who knows.
+But do not be fooled, the project might just get stalled, as I will be the only
+one in the world to use it. Who knows.
 
 ## License
 
