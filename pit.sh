@@ -50,7 +50,7 @@ local PROGNAME='pit';  # This can be changed if conflicts with other cmd utility
 local DEFAULT=$(realpath ~/.pit);  # Default home folder of the program
 local DB="$DEFAULT/db.json";  # Path to the database
 local PYTHON=python3;  # Python interpreter to use (use python version 3 and above)
-local FILEMANAGER=nautilus;  # Command which can open folders, if not desired ""
+local FILEMANAGER=""; #nautilus;  # Command which can open folders, if not desired ""
 local CLEAR=clear;  # fresh screen after list or env subcommands. To turn off set to: ""
 local INTERACTIVE=true;  # If true, program asks what to do next on list (faster to use)
 # local GUIDED=
@@ -386,10 +386,15 @@ has_jupyter(){
     if [ "$INTERACTIVE" = true ]; then
         pip show jupyterlab >/dev/null 2>/dev/null;
         if [ $? = 0 ]; then
-            read -r -p "Found Jupyter Lab, activate? [Y|n]: " ans
+            read -r -p "Found Jupyter Lab, activate? [Y|n|background]: " ans
             case "$ans" in
                 ""|[Yy]) # Blank, Y or y
                     jupyter-lab;
+                    return 0;
+                    ;;
+                "background"|[b]) # Run in background
+                    echo "List background jobs with command 'jobs' and bring back using 'fg ID'";
+                    jupyter-lab &
                     return 0;
                     ;;
                 *) # Anything else is invalid
@@ -398,10 +403,15 @@ has_jupyter(){
         fi
         pip show jupyter >/dev/null 2>/dev/null;
         if [ $? = 0 ]; then
-            read -r -p "Found Jupyter, activate? [Y|n]: " ans
+            read -r -p "Found Jupyter, activate? [Y|n|background]: " ans
             case "$ans" in
                 ""|[Yy]) # Blank, Y or y
                     jupyter notebook;
+                    return 0;
+                    ;;
+                "background"|[b]) # Run in background
+                    echo "List background jobs with command 'jobs' and bring back using 'fg ID'";
+                    jupyter notebook &
                     return 0;
                     ;;
                 *) # Anything else is invalid
